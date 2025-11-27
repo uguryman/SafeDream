@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  min-height: 100vh;
+  width: 100vw;
+}
+
+@layer utilities {
+  .glass-effect {
+    backdrop-filter: blur(24px);
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+
+  .glow-bitcoin {
+    box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+  }
+
+  .glow-bitcoin-strong {
+    box-shadow: 0 0 30px rgba(247, 147, 26, 0.5);
+  }
+
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+}

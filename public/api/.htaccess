@@ -1,0 +1,54 @@
+# LiveCarWash API Security Settings
+
+# .env dosyasına erişimi engelle
+<Files ".env">
+    Order allow,deny
+    Deny from all
+</Files>
+
+# core klasörüne doğrudan erişimi engelle (sadece PHP include ile erişilebilir)
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^core/ - [F,L]
+</IfModule>
+
+# Sadece PHP dosyalarına izin ver
+<FilesMatch "\.(txt|log|md|ini|sql|bak)$">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+# Directory listing'i kapat
+Options -Indexes
+
+# PHP error göstermeyi kapat (production için)
+php_flag display_errors Off
+php_value error_log /var/log/php_errors.log
+
+# JSON formatında response dönüş için
+<IfModule mod_headers.c>
+    # Security headers
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+
+    # API için JSON content type
+    <FilesMatch "\.(php)$">
+        Header set Content-Type "application/json; charset=utf-8"
+    </FilesMatch>
+</IfModule>
+
+# Rate limiting (mod_evasive kullanılıyorsa)
+# DOSHashTableSize 3097
+# DOSPageCount 5
+# DOSSiteCount 50
+# DOSPageInterval 1
+# DOSSiteInterval 1
+
+# HTTPS zorunlu (production için)
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
