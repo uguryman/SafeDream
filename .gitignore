@@ -12,6 +12,23 @@ dist
 dist-ssr
 *.local
 
+# Environment variables (GİZLİ BİLGİLER - ASLA COMMIT ETME!)
+.env
+.env.local
+.env.production
+.env.development
+public/api/.env
+public/api/.env.local
+
+# API vendor (composer dependencies)
+public/api/vendor/
+public/api/composer.lock
+
+# PHP temporary files
+public/api/*.log
+public/api/php_error.log
+public/api/login_error.log
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
