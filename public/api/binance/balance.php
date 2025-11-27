@@ -1,8 +1,8 @@
 <?php
 /**
- * Binance TR Bakiye Endpoint
+ * Binance Global Bakiye Endpoint
  *
- * Kullanıcının Binance TR hesabındaki tüm bakiyelerini getirir
+ * Kullanıcının Binance Global hesabındaki tüm bakiyelerini getirir
  *
  * Method: GET
  * Headers: Authorization: Bearer <access_token>
@@ -63,7 +63,7 @@ try {
         error('Bu işlem için yetkiniz yok. Sadece admin kullanıcıları bakiye sorgulayabilir.', 403);
     }
 
-    // Binance TR'den bakiye bilgilerini al
+    // Binance Global'den bakiye bilgilerini al
     $balanceResponse = getBinanceSpotBalance();
 
     // Bakiyeleri formatla (sadece bakiyesi olanları al)

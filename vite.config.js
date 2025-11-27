@@ -6,9 +6,9 @@ export default defineConfig({
   plugins: [react()],
   server: {
     proxy: {
-      // /api istekleri livecarwash.com'a yönlendir
-      '/api': {
-        target: 'https://livecarwash.com',
+      // /safe istekleri livecarwash.com'a yönlendir
+      '/safe': {
+        target: 'https://appmobile.golaks.com',
         changeOrigin: true,
         secure: false,
         // Cookie'leri yönlendir

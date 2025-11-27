@@ -7,9 +7,9 @@ let refreshPromise = null;
 
 // Base Query - Access token'ı otomatik header'a ekler
 const baseQuery = fetchBaseQuery({
-  // Localhost development: /api -> Vite proxy -> https://livecarwash.com/api
-  // Production: /api -> Same domain
-  baseUrl: '/api',
+  // Localhost development: /safe -> Vite proxy -> https://livecarwash.com/safe
+  // Production: /safe -> Same domain
+  baseUrl: '/safe',
   prepareHeaders: (headers, { getState }) => {
     // Access token'ı state'ten al
     const accessToken = getState().auth.accessToken;

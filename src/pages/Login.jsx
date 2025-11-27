@@ -31,7 +31,14 @@ function Login() {
       // Home sayfasına yönlendir
       navigate('/home')
     } catch (err) {
-      // Hata zaten errorMiddleware'de yakalandı
+      // Hata detaylarını console'a yazdır
+      console.error('Login Hatası Detayı:', err)
+      console.error('Hata Status:', err?.status)
+      console.error('Hata Data:', err?.data)
+      console.error('Hata Message:', err?.data?.message || err?.error || err?.message)
+
+      // Kullanıcıya göster
+      alert('Giriş Hatası: ' + (err?.data?.message || err?.error || err?.message || 'Sunucu hatası'))
     }
   }
 
