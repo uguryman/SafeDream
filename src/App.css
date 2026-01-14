@@ -40,3 +40,39 @@
 .read-the-docs {
   color: #888;
 } */
+
+/* Landscape mode navigation styles - tüm mobil ve tablet cihazlar için (iPad Pro dahil) */
+@media screen and (max-width: 1366px) and (orientation: landscape) {
+  /* Page wrapper adjustments */
+  .test-page-wrapper,
+  .mypage-wrapper {
+    padding-right: 80px !important;
+    padding-bottom: 0 !important;
+  }
+
+  /* Navigation bar positioning */
+  .mobile-nav-landscape {
+    bottom: auto !important;
+    top: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: 80px !important;
+    height: 100vh !important;
+    border-top: none !important;
+    border-left: 1px solid rgba(255, 255, 255, 0.1) !important;
+  }
+
+  /* Navigation grid layout */
+  .mobile-nav-grid {
+    grid-template-columns: 1fr !important;
+    gap: 0.5rem !important;
+    height: 100% !important;
+    align-content: center !important;
+    padding: 1rem 0.5rem !important;
+  }
+
+  /* Hide text labels in landscape */
+  .nav-text {
+    display: none !important;
+  }
+}

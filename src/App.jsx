@@ -1,16 +1,19 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { AuthGuard } from './components/AuthGuard'
 import { TokenRefreshManager } from './components/TokenRefreshManager'
+import { ToastProvider } from './components/Toast'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import MyPage from './pages/sayfam/MyPage'
+import TestPage from './pages/testpage/TestPage'
 import './App.css'
 
 function App() {
   return (
-    <Router>
-      {/* Otomatik token yenileme arka planda çalışır */}
-      <TokenRefreshManager />
+    <ToastProvider>
+      <Router>
+        {/* Otomatik token yenileme arka planda çalışır */}
+        <TokenRefreshManager />
 
       <Routes>
         <Route path="/login" element={<Login />} />
@@ -30,9 +33,18 @@ function App() {
             </AuthGuard>
           }
         />
+        <Route
+          path="/testpage"
+          element={
+            <AuthGuard>
+              <TestPage />
+            </AuthGuard>
+          }
+        />
         <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
-    </Router>
+      </Router>
+    </ToastProvider>
   )
 }
 

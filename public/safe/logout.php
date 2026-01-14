@@ -8,18 +8,17 @@
  * Cookie: refresh_token
  */
 
-// CORS ayarları
+// CORS ayarları - Frontend localhost'ta, backend appmobile.golaks.com'da
 $allowedOrigins = [
-    'https://livecarwash.com',
-    'https://www.livecarwash.com',
-    'http://localhost:5173', // Vite dev server
+    'http://localhost:5173', // Vite dev server (local frontend)
 ];
 
 $origin = $_SERVER['HTTP_ORIGIN'] ?? '';
 if (in_array($origin, $allowedOrigins)) {
     header('Access-Control-Allow-Origin: ' . $origin);
 } else {
-    header('Access-Control-Allow-Origin: https://livecarwash.com');
+    // Default olarak localhost'a izin ver (development için)
+    header('Access-Control-Allow-Origin: http://localhost:5173');
 }
 
 header('Access-Control-Allow-Methods: POST, OPTIONS');

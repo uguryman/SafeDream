@@ -30,8 +30,10 @@ function TransactionCard() {
           <select className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-bitcoin focus:outline-none">
             <option value="BTC">Bitcoin (BTC)</option>
             <option value="ETH">Ethereum (ETH)</option>
+            <option value="BNB">Binance Coin (BNB)</option>
             <option value="ADA">Cardano (ADA)</option>
             <option value="XRP">Ripple (XRP)</option>
+            <option value="LINK">Chainlink (LINK)</option>
           </select>
         </div>
 

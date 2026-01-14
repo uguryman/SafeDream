@@ -8,7 +8,7 @@ import { errorMiddleware } from './middleware/errorMiddleware';
 // Redux Store Konfigürasyonu
 export const store = configureStore({
   reducer: {
-    // API Reducer - RTK Query (Backend API)
+    // API Reducer - RTK Query (Backend API) - testnet de buraya inject edildi
     [apiSlice.reducerPath]: apiSlice.reducer,
 
     // Binance Direct API Reducer (Frontend -> Binance TR direkt)

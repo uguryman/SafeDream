@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { useGetDirectTickerPriceQuery } from '../store/api/binanceDirectApi'
 import Navbar from '../components/Navbar'
 import PriceChart from '../components/PriceChart'
@@ -32,6 +33,39 @@ function Home() {
               <p className="text-gray-300 text-sm">
                 Güvenli giriş portalına başarıyla giriş yaptınız.
               </p>
+            </div>
+
+            {/* Hızlı Erişim Butonları */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <Link
+                to="/mypage"
+                className="group bg-gradient-to-br from-purple-500/20 to-purple-500/5 border border-purple-500/30 rounded-xl p-6 hover:border-purple-500/50 transition-all duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-purple-500/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                    👤
+                  </div>
+                  <div>
+                    <h3 className="text-white text-xl font-bold mb-1">Sayfam</h3>
+                    <p className="text-gray-400 text-sm">Cüzdan ve gerçek işlemler</p>
+                  </div>
+                </div>
+              </Link>
+
+              <Link
+                to="/testpage"
+                className="group bg-gradient-to-br from-green-500/20 to-green-500/5 border border-green-500/30 rounded-xl p-6 hover:border-green-500/50 transition-all duration-300"
+              >
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
+                    🧪
+                  </div>
+                  <div>
+                    <h3 className="text-white text-xl font-bold mb-1">Test Sayfası</h3>
+                    <p className="text-gray-400 text-sm">Testnet ile deneme yapın</p>
+                  </div>
+                </div>
+              </Link>
             </div>
 
             {/* Anlık Coin Fiyatları */}

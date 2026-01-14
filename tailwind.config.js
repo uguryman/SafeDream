@@ -12,6 +12,16 @@ export default {
       },
       animation: {
         'pulse-slow': 'pulse 4s ease-in-out infinite',
+        'slide-in-right': 'slideInRight 0.3s ease-out',
+      },
+      keyframes: {
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+      },
+      screens: {
+        'desktop': '1367px', // iPad Pro 12.9" landscape'den sonra desktop
       },
     },
   },
