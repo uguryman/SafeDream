@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useCreateTestOrderMutation, useGetTickerPriceQuery, useGetExchangeInfoQuery } from '../../store/api/binanceTestnetApi'
 import { useToast } from '../../components/Toast'
+import { getCoinOptions } from '../../config/coins'
 
 /**
  * Test İşlem Kartı Komponenti
@@ -197,12 +198,11 @@ function TestTransactionCard() {
             onChange={(e) => setSelectedCoin(e.target.value)}
             className="w-full bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-bitcoin focus:outline-none"
           >
-            <option value="BTCUSDT">Bitcoin (BTC/USDT)</option>
-            <option value="ETHUSDT">Ethereum (ETH/USDT)</option>
-            <option value="BNBUSDT">Binance Coin (BNB/USDT)</option>
-            <option value="ADAUSDT">Cardano (ADA/USDT)</option>
-            <option value="XRPUSDT">Ripple (XRP/USDT)</option>
-            <option value="LINKUSDT">Chainlink (LINK/USDT)</option>
+            {getCoinOptions().map(option => (
+              <option key={option.value} value={option.value}>
+                {option.icon} {option.label}
+              </option>
+            ))}
           </select>
         </div>
 

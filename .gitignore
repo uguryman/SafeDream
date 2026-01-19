@@ -29,6 +29,9 @@ public/api/*.log
 public/api/php_error.log
 public/api/login_error.log
 
+# Documentation (internal - not for public repo)
+# CLOUD.md                        # Cloud deployment guide (keep for reference)
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
@@ -39,3 +42,25 @@ public/api/login_error.log
 *.njsproj
 *.sln
 *.sw?
+
+# AWS & Cloud specific
+.aws/
+*.pem
+*.key
+
+# Docker
+docker-compose.override.yml
+.dockerignore
+
+# CI/CD
+.github/workflows/*.local.yml
+
+# Backup files
+*.backup
+*.bak
+*.sql.gz
+
+# OS specific
+Thumbs.db
+.Spotlight-V100
+.Trashes

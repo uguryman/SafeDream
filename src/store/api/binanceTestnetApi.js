@@ -150,6 +150,35 @@ export const binanceTestnetApi = apiSlice.injectEndpoints({
       },
       providesTags: (result, error, symbol) => [{ type: 'ExchangeInfo', id: symbol }],
     }),
+
+    // Klines - Historical Candlestick Data
+    getKlines: builder.query({
+      query: ({ symbol, interval = '1m', limit = 100 }) => {
+        const params = new URLSearchParams({
+          symbol: symbol.toUpperCase(),
+          interval: interval,
+          limit: limit.toString()
+        });
+        return `/binance/klines.php?${params.toString()}`;
+      },
+      transformResponse: (response) => {
+        if (response.success && response.data) {
+          // Binance klines format: [timestamp, open, high, low, close, volume, ...]
+          return response.data.map(candle => ({
+            time: candle[0] / 1000, // Lightweight Charts saniye cinsinden ister
+            open: parseFloat(candle[1]),
+            high: parseFloat(candle[2]),
+            low: parseFloat(candle[3]),
+            close: parseFloat(candle[4]),
+            volume: parseFloat(candle[5])
+          }));
+        }
+        throw new Error(response.message || 'Klines verisi alınamadı');
+      },
+      providesTags: (result, error, { symbol, interval }) => [
+        { type: 'Klines', id: `${symbol}_${interval}` }
+      ],
+    }),
   }),
 });
 
@@ -163,4 +192,5 @@ export const {
   useGetTickerPriceQuery,
   useGetMultipleTickerPricesQuery,
   useGetExchangeInfoQuery,
+  useGetKlinesQuery,
 } = binanceTestnetApi;

@@ -1,0 +1,78 @@
+{
+  "botEvents": [
+    {
+      "id": "start_example_123",
+      "timestamp": 1768786772646,
+      "datetime": "2026-01-19T12:30:00.000Z",
+      "type": "BOT_START",
+      "botId": "bot_ADAUSDT_123",
+      "symbol": "ADAUSDT",
+      "strategy": "scalping",
+      "settings": {
+        "buyThreshold": -0.5,
+        "sellThreshold": 0.5,
+        "tradeAmount": 10
+      },
+      "message": "Bot başlatıldı: ADAUSDT - SCALPING"
+    },
+    {
+      "id": "stop_example_456",
+      "timestamp": 1768786872646,
+      "datetime": "2026-01-19T12:45:00.000Z",
+      "type": "BOT_STOP",
+      "botId": "bot_ADAUSDT_123",
+      "symbol": "ADAUSDT",
+      "strategy": "scalping",
+      "stats": {
+        "totalTrades": 5,
+        "successfulTrades": 4,
+        "totalProfit": 2.45
+      },
+      "message": "Bot durduruldu: ADAUSDT - 5 işlem"
+    }
+  ],
+  "trades": [
+    {
+      "id": "trade_example_789",
+      "timestamp": 1768786800000,
+      "datetime": "2026-01-19T12:33:20.000Z",
+      "botId": "bot_ADAUSDT_123",
+      "symbol": "ADAUSDT",
+      "type": "BUY",
+      "status": "success",
+      "price": 0.5123,
+      "quantity": 19.52,
+      "amount": 10,
+      "profit": 0,
+      "strategy": "scalping",
+      "settings": {
+        "buyThreshold": -0.5,
+        "sellThreshold": 0.5,
+        "tradeAmount": 10
+      }
+    }
+  ],
+  "errors": [
+    {
+      "id": "error_example_101",
+      "timestamp": 1768786850000,
+      "datetime": "2026-01-19T12:34:10.000Z",
+      "type": "ERROR",
+      "message": "Miktar çok düşük: 0.001 (Min: 0.01)",
+      "botId": "bot_ADAUSDT_123",
+      "symbol": "ADAUSDT",
+      "details": {
+        "quantity": 0.001,
+        "minQty": 0.01,
+        "minNotional": 5
+      }
+    }
+  ],
+  "stats": {
+    "totalTrades": 5,
+    "successfulTrades": 4,
+    "failedTrades": 1,
+    "totalProfit": 2.45
+  },
+  "lastUpdate": 1768786872646
+}

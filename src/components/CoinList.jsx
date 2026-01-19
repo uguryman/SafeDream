@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useGetDirectMultipleTickerPricesQuery } from '../store/api/binanceDirectApi'
 import PriceChart from './PriceChart'
+import { getAllSymbols, getCoinIcon, getCoinColor, getCoinName } from '../config/coins'
 
 /**
  * Coin Listesi Komponenti
@@ -10,7 +11,7 @@ import PriceChart from './PriceChart'
  * @param {string} selectedSymbol - Seçili coin'in symbol'ü
  */
 function CoinList({ onCoinSelect, selectedSymbol }) {
-  const symbols = ['BTCUSDT', 'ETHUSDT', 'BNBUSDT', 'ADAUSDT', 'XRPUSDT', 'LINKUSDT']
+  const symbols = getAllSymbols() // Merkezi config'den tüm coin'leri al
   const [selectedCoin, setSelectedCoin] = useState(null) // Grafik için seçili coin
 
   // Birden fazla coin fiyatını çek (her 10 saniyede otomatik yenilenir)
@@ -35,37 +36,6 @@ function CoinList({ onCoinSelect, selectedSymbol }) {
   // Manuel refresh
   const handleRefresh = () => {
     refetch()
-  }
-
-  // Coin için icon/emoji
-  const getCoinIcon = (symbol) => {
-    const icons = {
-      BTCUSDT: '₿',
-      ETHUSDT: 'Ξ',
-      BNBUSDT: '◆',
-      ADAUSDT: '₳',
-      XRPUSDT: '✕',
-      LINKUSDT: '🔗',
-    }
-    return icons[symbol] || '●'
-  }
-
-  // Coin için renk
-  const getCoinColor = (symbol) => {
-    const colors = {
-      BTCUSDT: 'text-bitcoin',
-      ETHUSDT: 'text-blue-400',
-      BNBUSDT: 'text-yellow-400',
-      ADAUSDT: 'text-purple-400',
-      XRPUSDT: 'text-gray-300',
-      LINKUSDT: 'text-blue-500',
-    }
-    return colors[symbol] || 'text-gray-400'
-  }
-
-  // Coin ismini al (BTCUSDT -> BTC)
-  const getCoinName = (symbol) => {
-    return symbol.replace('USDT', '')
   }
 
   // Eğer coin seçiliyse, tam sayfa grafik göster
